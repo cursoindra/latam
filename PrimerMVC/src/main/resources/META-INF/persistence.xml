@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="PrimerMVC">
+		<class>indra.formacion.latam.datos.Cargo</class>
+		<class>indra.formacion.latam.datos.DatoLaboral</class>
+		<class>indra.formacion.latam.datos.DatoPersonal</class>
+		<class>indra.formacion.latam.datos.Empleado</class>
+		<class>indra.formacion.latam.datos.Empresa</class>
+		<class>indra.formacion.latam.datos.Estadocivil</class>
+		<class>indra.formacion.latam.datos.Hijo</class>
+	</persistence-unit>
+</persistence>
