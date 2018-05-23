@@ -1,0 +1,10 @@
+package diauno.primerejercicio;
+
+public class Encapsulacion
+{
+
+	public int valor1=5;
+	protected int valor2=7;
+	int valor3=56;
+	
+}

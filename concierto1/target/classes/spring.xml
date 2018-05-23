@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<context:component-scan base-package="curso.java.concierto.musicos"></context:component-scan>
+	<context:component-scan base-package="curso.java.concierto.instrumentos"></context:component-scan>
+	
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+	<!-- <bean id="tambor" class="curso.java.concierto.instrumentos.Tambor">
+		<property name="sonido" value="cpom, pom, pom 
+		inyectado en xml"></property>
+	</bean> -->
+
+	<!-- </bean> <bean id="trompeta" class="curso.java.concierto.instrumentos.Instrumento" 
+		autowire-candidate="false"> <property name="sonido" value="btuuu, tuuu, tuuu 
+		inyectado con util"></property> </bean> <bean id="guitarra" class="curso.java.concierto.instrumentos.Instrumento" 
+		autowire-candidate="false"> <property name="sonido" value="cpom, pom, pom 
+		inyectado en constructor"></property> </bean> -->
+
+	<!-- <bean id="solista" class="curso.java.concierto.musicos.Solista"> <constructor-arg 
+		name="instrumento" ref="guitarra"></constructor-arg> </bean> -->
+
+	<!-- <bean id="solista" class="curso.java.concierto.musicos.Solista" p:instrumento-ref="guitarra"> 
+		<property name="instrumento" ref="guitarra"></property> </bean> -->
+
+	<!-- <bean id="hombreOrquesta" class="curso.java.concierto.musicos.HombreOrquesta" 
+		autowire="byType" > <property name="instrumento" ref="guitarra"></property> 
+		</bean> <util:set id="misInstrumentos"> <ref bean="tambor" /> <ref bean="trompeta" 
+		/> <ref bean="guitarra" /> </util:set> -->
+</beans>

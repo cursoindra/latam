@@ -1,0 +1,12 @@
+package diauno.primerejercicio.colecciones;
+
+public class ColeccionesMap
+{
+
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+}

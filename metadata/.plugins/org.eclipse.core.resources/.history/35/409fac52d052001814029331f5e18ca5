@@ -1,0 +1,33 @@
+package diauno.primerejercicio;
+
+public class PrimeraClase 
+{
+
+	public static void main(String[] args) 
+	{
+		
+		System.out.println(suma(18,33));
+		
+		int a=5;
+		int b=a++;
+		
+		System.out.println("a vale:"+a);
+		System.out.println("b vale:"+b);
+		
+		int c=5;
+		int d=++c;
+		
+		System.out.println("c vale:"+c);
+		System.out.println("d vale:"+d);
+		
+		
+	}
+	
+	public static int suma(int a, int b)
+	{
+		return a+b;
+	}
+	
+	
+
+}

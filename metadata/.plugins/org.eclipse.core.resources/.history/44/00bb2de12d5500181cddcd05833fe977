@@ -1,0 +1,15 @@
+package diauno.primerejercicio.calendarios;
+
+import java.util.GregorianCalendar;
+
+public class Calendario
+{
+
+	public static void main(String[] args)
+	{
+		GregorianCalendar fecha= new GregorianCalendar();
+		System.out.println(fecha);
+
+	}
+
+}

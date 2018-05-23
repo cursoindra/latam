@@ -1,0 +1,69 @@
+package diauno.primerejercicio;
+
+public class Coche extends Vehiculo
+{
+	private boolean gasolina, rueda, bateria;
+	
+	
+	
+	
+	public void viajarPorAutopista(){
+		System.out.println("estoy en la autopista");
+	}
+
+	
+	public void arrancar()
+	{
+		viajarPorAutopista();
+	}
+
+
+
+	public boolean isGasolina()
+	{
+		return gasolina;
+	}
+
+
+
+
+	public void setGasolina(boolean gasolina)
+	{
+		this.gasolina = gasolina;
+	}
+
+
+
+
+	public boolean isRueda()
+	{
+		return rueda;
+	}
+
+
+
+
+	public void setRueda(boolean rueda)
+	{
+		this.rueda = rueda;
+	}
+
+
+
+
+	public boolean isBateria()
+	{
+		return bateria;
+	}
+
+
+
+
+	public void setBateria(boolean bateria)
+	{
+		this.bateria = bateria;
+	}
+	
+	
+	
+}

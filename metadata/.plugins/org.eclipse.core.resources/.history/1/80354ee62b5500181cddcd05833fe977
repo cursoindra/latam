@@ -1,0 +1,12 @@
+package diauno.primerejercicio.calendarios;
+
+public class Calendario
+{
+
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+}

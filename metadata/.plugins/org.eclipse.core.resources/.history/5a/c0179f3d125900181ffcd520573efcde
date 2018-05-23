@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+	
+	<form action="PrimerServlet" >
+	nombre:<input type="text" name="nombre"><input type="submit" value="ENVIAR">
+	
+	</form>
+	
+	</body>
+</html>

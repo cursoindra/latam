@@ -1,0 +1,6 @@
+package diauno.primerejercicio.hilos;
+
+public class Hilo extends Thread
+{
+
+}

@@ -1,0 +1,8 @@
+package diauno.primerejercicio;
+
+public class Coche extends Vehiculo
+{
+	public void viajarPorAutopista(){
+		System.out.println("estoy en la autopista");
+	}
+}

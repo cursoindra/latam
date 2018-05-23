@@ -1,0 +1,12 @@
+package diauno.primerejercicio.hilos;
+
+public class VerHilo
+{
+
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+}

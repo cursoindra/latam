@@ -1,0 +1,6 @@
+package diauno.primerejercicio;
+
+public class Coche extends Vehiculo
+{
+
+}

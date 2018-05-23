@@ -1,0 +1,6 @@
+package chat.hilos;
+
+public class HiloEnvio extends Thread
+{
+
+}

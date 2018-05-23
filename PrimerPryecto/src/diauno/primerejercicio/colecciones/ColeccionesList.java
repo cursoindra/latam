@@ -1,0 +1,52 @@
+package diauno.primerejercicio.colecciones;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
+import diauno.primerejercicio.Agenda;
+
+public class ColeccionesList
+{
+
+	public static void main(String[] args)
+	{
+		Agenda agenda = new Agenda();
+		agenda.setNombre("Javier");
+		agenda.setDireccion("casa");
+		agenda.setTelefono("9887");
+		
+		Agenda agenda1 = new Agenda();
+		agenda1.setNombre("Javier");
+		agenda1.setDireccion("casa");
+		agenda1.setTelefono("9887");
+		
+		Agenda agenda2= new Agenda();
+		agenda2.setNombre("Javier");
+		agenda2.setDireccion("casa");
+		agenda2.setTelefono("9887");
+		
+		Agenda agenda3 = new Agenda();
+		agenda3.setNombre("Javier");
+		agenda3.setDireccion("casa");
+		agenda3.setTelefono("9887");
+
+		//List<Agenda> agendas = new ArrayList<>();
+		Set<Agenda> agendas= new HashSet<>();
+		agendas.add(agenda);
+		agendas.add(agenda1);
+		agendas.add(agenda2);
+		agendas.add(agenda3);
+		
+		
+		for (Agenda a : agendas)
+		{
+			System.out.println(a.getNombre()+" - "+a.hashCode());
+			
+		}
+
+	}
+
+}

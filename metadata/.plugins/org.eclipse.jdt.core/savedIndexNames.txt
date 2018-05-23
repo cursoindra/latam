@@ -1,0 +1,11 @@
+INDEX VERSION 1.127+/Users/javierdiaz/Documents/cursos/latam/git/.metadata/.plugins/org.eclipse.jdt.core
+2714007116.index
+2119585413.index
+3805292824.index
+1936179061.index
+1120148594.index
+571461666.index
+1948974843.index
+698271115.index
+2486711678.index
+3040970730.index

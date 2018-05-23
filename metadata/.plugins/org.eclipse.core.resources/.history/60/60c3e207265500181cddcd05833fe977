@@ -1,0 +1,34 @@
+package chat.hilos;
+
+import chat.VentanaChat;
+
+public class HiloEnvio extends Thread
+{
+	private VentanaChat ventanaChat;
+	public HiloEnvio(VentanaChat ventanaChat)
+	{
+		this.ventanaChat=ventanaChat;
+	}
+	
+	
+	@Override
+	public void run()
+	{
+		
+		
+		
+	}
+
+
+	public VentanaChat getVentanaChat()
+	{
+		return ventanaChat;
+	}
+
+
+	public void setVentanaChat(VentanaChat ventanaChat)
+	{
+		this.ventanaChat = ventanaChat;
+	}
+
+}

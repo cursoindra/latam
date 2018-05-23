@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+	<localRepository>${ide_apx_maven_local_repository}</localRepository>
+
+	<pluginGroups>
+	</pluginGroups>
+
+	<proxies>
+		<proxy>
+			<host>proxy.indra.es</host>
+			<port>8080</port>
+			<username>usuario</username>
+			<password>clave</password>
+		</proxy>
+	</proxies>
+
+	<servers>
+		<server>
+			<id>artifactory-APX</id>
+			<username>${ide_apx_artifactory_user}</username>
+			<password>${ide_apx_artifactory_password}</password>
+		</server>
+	</servers>
+
+	<mirrors>
+
+
+	</mirrors>
+
+	<profiles>
+		<profile>
+			<id>artifactory</id>
+			<repositories>
+				<repository>
+					<id>artifactory-APX</id>
+					<url>${ide_apx_maven_repository_url}</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>artifactory-APX</id>
+					<url>${ide_apx_maven_repository_url}</url>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+	</profiles>
+	<activeProfiles>
+		<activeProfile>artifactory</activeProfile>
+	</activeProfiles>
+
+</settings>

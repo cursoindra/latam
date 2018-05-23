@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+	
+	<form action="PrimerServlet"  >
+	usuario:<input type="text" name="usuario">
+	
+	<br>
+	
+	clave:<input type="password" name="clave">
+	<br>
+	<input type="submit" value="ENVIAR">
+	
+
+	
+	</form>
+	
+	</body>
+</html>

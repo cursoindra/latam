@@ -1,0 +1,44 @@
+package chat.hilos;
+
+import java.net.ServerSocket;
+
+import chat.VentanaChat;
+
+public class HiloRecibir extends Thread
+{
+	
+	private VentanaChat ventanaChat;
+	public HiloRecibir(VentanaChat ventanaChat)
+	{
+		this.ventanaChat=ventanaChat;
+	}
+	
+	@Override
+	public void run()
+	{
+		try(ServerSocket serverSocket= new ServerSocket(5000))
+		{
+			while(true)
+			{
+				
+			}
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+
+	public VentanaChat getVentanaChat()
+	{
+		return ventanaChat;
+	}
+
+	public void setVentanaChat(VentanaChat ventanaChat)
+	{
+		this.ventanaChat = ventanaChat;
+	}
+	
+
+}

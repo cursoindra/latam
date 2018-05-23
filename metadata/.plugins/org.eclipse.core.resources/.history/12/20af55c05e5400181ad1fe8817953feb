@@ -1,0 +1,33 @@
+package diauno.primerejercicio.colecciones;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import diauno.primerejercicio.Agenda;
+
+public class ColeccionesList
+{
+
+	public static void main(String[] args)
+	{
+		Agenda agenda = new Agenda();
+		agenda.setNombre("Javier");
+		agenda.setDireccion("casa");
+		agenda.setTelefono("9887");
+
+		List<Agenda> agendas = new ArrayList<>();
+		agendas.add(agenda);
+		agendas.add(agenda);
+		agendas.add(agenda);
+		agendas.add(agenda);
+		agendas.add(agenda);
+		agendas.add(agenda);
+		
+		for (int i = 0; i < agendas.size(); i++)
+		{
+			System.out.println(agendas.get(i).getNombre());
+		}
+
+	}
+
+}

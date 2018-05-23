@@ -1,0 +1,20 @@
+package diauno.primerejercicio.streams;
+
+import java.io.FileInputStream;
+
+public class CopiarArchivo
+{
+
+	public static void main(String[] args)
+	{
+		try(FileInputStream fileInputStream= new FileInputStream("images"))
+		{
+			
+		} catch (Exception e)
+		{
+			// TODO: handle exception
+		}
+
+	}
+
+}

@@ -1,0 +1,16 @@
+package chat;
+
+import java.awt.Frame;
+
+public class VentanaChat extends Frame
+{
+
+	public static void main(String[] args)
+	{
+		VentanaChat ventanaChat= new VentanaChat();
+		ventanaChat.setSize(500,500);
+		ventanaChat.setVisible(true);
+
+	}
+
+}

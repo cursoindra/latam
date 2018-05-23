@@ -1,0 +1,12 @@
+package diauno.primerejercicio.hilos;
+
+public class VerHilo
+{
+
+	public static void main(String[] args)
+	{
+		Hilo hilo= new Hilo(5000);
+		hilo.start();
+	}
+
+}

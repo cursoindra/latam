@@ -1,0 +1,23 @@
+package diauno.primerejercicio.streams;
+
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
+public class LeerObjeto
+{
+
+	public static void main(String[] args)
+	{
+		try(FileInputStream fileInputStream= new FileInputStream("federico.agenda");
+				ObjectInputStream objectInputStream= new ObjectInputStream(fileInputStream))
+		{
+			
+			
+		} catch (Exception e)
+		{
+			// TODO: handle exception
+		}
+
+	}
+
+}
