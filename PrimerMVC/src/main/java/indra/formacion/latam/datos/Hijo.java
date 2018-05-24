@@ -22,6 +22,9 @@ public class Hijo implements Serializable {
 	private int chicas;
 
 	private int chicos;
+	
+	@Transient
+	private String texto;
 
 	//bi-directional many-to-one association to DatoPersonal
 	@OneToMany(mappedBy="hijo")
@@ -74,6 +77,20 @@ public class Hijo implements Serializable {
 		datosPersonale.setHijo(null);
 
 		return datosPersonale;
+	}
+	
+	@Override
+	public String toString() {
+		
+		return "chicos:"+getChicos()+" - chicas:"+getChicas();
+	}
+
+	public String getTexto() {
+		return toString();
+	}
+
+	public void setTexto(String texto) {
+		this.texto = texto;
 	}
 
 }

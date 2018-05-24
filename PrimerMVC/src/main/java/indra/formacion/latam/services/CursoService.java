@@ -148,4 +148,9 @@ public class CursoService implements CursoServiceInterface {
 		
 	}
 
+	public List<Hijo> getHijos() throws Exception{
+	
+		return getCursoDao().getHijos();
+	}
+
 }

@@ -28,7 +28,7 @@ import indra.formacion.latam.services.CursoService;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class CargoController {
 	
 	@Autowired
 	private CursoDelegate cursoDelegate;
@@ -147,12 +147,20 @@ public class HomeController {
 		
 		try {
 			getCursoService().grabaCargo(cargo);
-			modelAndView.addObject("cargos", getCursoService().getCargos());
+			
 			modelAndView.addObject("cargo",new Cargo());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			modelAndView.addObject("error","la grabacion no se ha realizado");
+		}
+		finally {
+			try {
+				modelAndView.addObject("cargos", getCursoService().getCargos());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		
@@ -167,12 +175,20 @@ public class HomeController {
 		
 		try {
 			getCursoService().borraCargo(id);
-			modelAndView.addObject("cargos", getCursoService().getCargos());
+			
 			modelAndView.addObject("cargo",new Cargo());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			modelAndView.addObject("error","el borrado no se ha realizado");
+		}
+		finally {
+			try {
+				modelAndView.addObject("cargos", getCursoService().getCargos());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		return modelAndView;

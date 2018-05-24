@@ -9,33 +9,41 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 align="center">ESTADO CIVIL</h1>
-	<spring:form action="/latam/grabaEstadoCivil" method="post"
-		modelAttribute="estadoCivil">
-
+	<h1 align="center">HIJOS</h1>
+	<spring:form action="/latam/grabaHijo" method="post" modelAttribute="hijo">
 		<table border="1" align="center">
 			<tr>
-				<td><spring:input path="descripcion" /></td>
+				<td>CHICOS</td>
+				<td><spring:input path="chicos" /></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="grabar"></td>
+				<td>CHICAS</td>
+				<td><spring:input path="chicas" /></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit"
+					value="GRABAR"></td>
+
 			</tr>
 		</table>
 		<table border="1" align="center">
-			<c:forEach items="${estadosCiviles }" var="estadoCivil">
+			<tr>
+				<td>CHICOS</td>
+				<td>CHICAS</td>
+			</tr>
+			<c:forEach items="${hijos}" var="hijo">
 				<tr>
-					<td>${estadoCivil.descripcion }</td>
-					<td><a href="/latam/borraEstadoCivil/${estadoCivil.id }">borrar</a></td>
+					<td>${hijo.chicos }</td>
+					<td>${hijo.chicas }</td>
 				</tr>
-
 			</c:forEach>
 		</table>
+
 
 	</spring:form>
 	<h1 style="color: #ff0000">${error }</h1>
 	<div align="center">
 		<a href="/latam/">MENU</a>
 	</div>
-
 </body>
 </html>

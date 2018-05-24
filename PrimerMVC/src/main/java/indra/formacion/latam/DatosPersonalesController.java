@@ -6,69 +6,77 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import indra.formacion.latam.datos.Estadocivil;
+import com.sun.tools.xjc.reader.RawTypeSet.Mode;
+
+import indra.formacion.latam.datos.DatoPersonal;
 import indra.formacion.latam.services.CursoService;
 
 @Controller
-public class EstadoCivilController {
+public class DatosPersonalesController {
 	@Autowired
 	private CursoService cursoService;
 	
-	@RequestMapping("estadoCivil")
-	public ModelAndView estadoCivil() 
+	@RequestMapping("datosPersonales")
+	public ModelAndView datosPersonales()
 	{
-		ModelAndView modelAndView= new ModelAndView("estadoCivil");
-		modelAndView.addObject("estadoCivil",new Estadocivil());
+		ModelAndView modelAndView= new ModelAndView("datosPersonales");
+		
+		modelAndView.addObject("datoPersonal", new DatoPersonal());
+		
 		try {
 			modelAndView.addObject("estadosCiviles", getCursoService().getEstadoCivil());
+			modelAndView.addObject("hijos", getCursoService().getHijos());
+			modelAndView.addObject("datosPersonales", getCursoService().getDatoPersonal());
 		} catch (Exception e) {
 			modelAndView.addObject("error", "no se ha podido realizar la carga de datos");
 			e.printStackTrace();
 		}
+		
 		return modelAndView;
 	}
 	
-	@RequestMapping("grabaEstadoCivil")
-	public ModelAndView grabaEstadoCivil(Estadocivil estadocivil)
+	@RequestMapping("grabaDatoPersonal")
+	public ModelAndView grabaDatoPersonal(DatoPersonal datoPersonal)
 	{
-		ModelAndView modelAndView= new ModelAndView("estadoCivil");
-		
+		ModelAndView modelAndView= new ModelAndView("datosPersonales");
+		modelAndView.addObject("datoPersonal", new DatoPersonal());
+	
 		try {
-			getCursoService().grabaEstadoCivil(estadocivil);
-			modelAndView.addObject("estadoCivil",new Estadocivil());
-			
+			getCursoService().grabaDatoPersonal(datoPersonal);
 		} catch (Exception e) {
-			
-			e.printStackTrace();
 			modelAndView.addObject("error","la grabacion no se ha realizado");
+			e.printStackTrace();
 		}
 		finally {
 			try {
+				modelAndView.addObject("hijos",	getCursoService().getHijos());
 				modelAndView.addObject("estadosCiviles", getCursoService().getEstadoCivil());
+				modelAndView.addObject("datosPersonales", getCursoService().getDatoPersonal());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		
-		return estadoCivil();
 		
+		return modelAndView;
 	}
 	
-	@RequestMapping("borraEstadoCivil/{id}")
-	public ModelAndView borraEstadoCivil(@PathVariable("id") int id)
+	@RequestMapping("borraDatoPersonal/{id}")
+	public ModelAndView borraDatoPersonal(@PathVariable("id") int id)
 	{
-		ModelAndView modelAndView= new ModelAndView("estadoCivil");
+		ModelAndView modelAndView= new ModelAndView("datosPersonales");
+		modelAndView.addObject("datoPersonal", new DatoPersonal());
 		try {
-			getCursoService().borraEstadoCivil(id);
-			modelAndView.addObject("estadoCivil",new Estadocivil());
-			
+			getCursoService().borraDatoPersonal(id);
 		} catch (Exception e) {
 			modelAndView.addObject("error","el borrado no se ha realizado");
 			e.printStackTrace();
 		}
 		finally {
 			try {
+				modelAndView.addObject("datosPersonales", getCursoService().getDatoPersonal());
+				modelAndView.addObject("hijos", getCursoService().getHijos());
 				modelAndView.addObject("estadosCiviles", getCursoService().getEstadoCivil());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -78,6 +86,8 @@ public class EstadoCivilController {
 		
 		return modelAndView;
 	}
+	
+	
 
 	public CursoService getCursoService() {
 		return cursoService;
@@ -86,5 +96,4 @@ public class EstadoCivilController {
 	public void setCursoService(CursoService cursoService) {
 		this.cursoService = cursoService;
 	}
-
 }

@@ -14,11 +14,11 @@
 		</tr><tr>
 			<td><a href="estadoCivil">ALTA ESTADO CIVIL</a></td>
 		</tr><tr>
-			<td><a href="">ALTA HIJOS</a></td>
+			<td><a href="hijos">ALTA HIJOS</a></td>
 		</tr><tr>
-			<td><a href="">ALTA DATOS LABORALES</a></td>
+			<td><a href="datosLaborales">ALTA DATOS LABORALES</a></td>
 		</tr><tr>
-			<td><a href="">ALTA DATOS PERSONALES</a></td>
+			<td><a href="datosPersonales">ALTA DATOS PERSONALES</a></td>
 		</tr><tr>
 			<td><a href="">ALTA EMPLEADO</a></td>
 		</tr><tr>

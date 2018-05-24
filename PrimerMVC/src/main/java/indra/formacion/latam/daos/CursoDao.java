@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -244,5 +245,11 @@ public class CursoDao implements CursoDaoInterface {
 		tx.commit();
 		session.close();
 		
+	}
+
+	public List<Hijo> getHijos() throws  Exception {
+		Session session= getSessionFactory().openSession();
+		Criteria criteria= session.createCriteria(Hijo.class);
+		return criteria.list();
 	}
 }
