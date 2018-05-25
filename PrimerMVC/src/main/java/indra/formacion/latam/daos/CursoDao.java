@@ -100,12 +100,12 @@ public class CursoDao implements CursoDaoInterface {
 	}
 
 	@Override
-	public Empresa getEmpresa(String nombre)  throws Exception {
+	public Empresa getEmpresa(int id)  throws Exception {
 		
 		//usado con criteria		
 		Session session=getSessionFactory().openSession();
 		Criteria criteria=session.createCriteria(Empresa.class);
-		criteria.add(Restrictions.eq("descripcion", nombre));
+		criteria.add(Restrictions.eq("id", id));
 		return (Empresa) criteria.uniqueResult();
 	}
 
@@ -250,6 +250,13 @@ public class CursoDao implements CursoDaoInterface {
 	public List<Hijo> getHijos() throws  Exception {
 		Session session= getSessionFactory().openSession();
 		Criteria criteria= session.createCriteria(Hijo.class);
+		return criteria.list();
+	}
+
+	public List<Empresa> getEmpresas() throws  Exception {
+		Session session=getSessionFactory().openSession();
+		Criteria criteria= session.createCriteria(Empresa.class);
+		
 		return criteria.list();
 	}
 }

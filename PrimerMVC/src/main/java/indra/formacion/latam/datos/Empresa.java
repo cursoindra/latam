@@ -57,7 +57,8 @@ public class Empresa implements Serializable {
 
 		return empleado;
 	}
-
+	
+	
 	public String getDescripcion() {
 		return descripcion;
 	}

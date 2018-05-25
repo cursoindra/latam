@@ -81,5 +81,11 @@ public class DatoPersonal implements Serializable {
 
 		return empleado;
 	}
+	
+	@Override
+	public String toString() {
+	
+		return getEstadoscivile().getDescripcion()+" - chicos:"+getHijo().getChicos()+" - chicas:"+getHijo().getChicas();
+	}
 
 }

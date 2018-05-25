@@ -11,18 +11,27 @@
 	<table border="1" align="center">
 		<tr>
 			<td><a href="altaCargos">ALTA CARGOS</a></td>
-		</tr><tr>
+		</tr>
+		<tr>
 			<td><a href="estadoCivil">ALTA ESTADO CIVIL</a></td>
-		</tr><tr>
+		</tr>
+		<tr>
 			<td><a href="hijos">ALTA HIJOS</a></td>
-		</tr><tr>
+		</tr>
+		<tr>
 			<td><a href="datosLaborales">ALTA DATOS LABORALES</a></td>
-		</tr><tr>
+		</tr>
+		<tr>
 			<td><a href="datosPersonales">ALTA DATOS PERSONALES</a></td>
-		</tr><tr>
-			<td><a href="">ALTA EMPLEADO</a></td>
-		</tr><tr>
-			<td><a href="">ALTA EMPRESA</a></td>
+		</tr>
+		<tr>
+			<td><a href="empleados">ALTA EMPLEADO</a></td>
+		</tr>
+		<tr>
+			<td><a href="empresas">ALTA EMPRESA</a></td>
+		</tr>
+		<tr>
+			<td><a href="modificacion">MODIFICACION</a></td>
 		</tr>
 	</table>
 

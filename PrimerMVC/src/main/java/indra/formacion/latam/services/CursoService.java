@@ -2,6 +2,7 @@ package indra.formacion.latam.services;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,9 +64,9 @@ public class CursoService implements CursoServiceInterface {
 	}
 
 	@Override
-	public Empresa getEmpresa(String nombre) throws Exception {
+	public Empresa getEmpresa(int  id) throws Exception {
 		
-		return getCursoDao().getEmpresa(nombre);
+		return getCursoDao().getEmpresa(id);
 	}
 
 	@Override
@@ -151,6 +152,11 @@ public class CursoService implements CursoServiceInterface {
 	public List<Hijo> getHijos() throws Exception{
 	
 		return getCursoDao().getHijos();
+	}
+
+	public List<Empresa> getEmpresas() throws  Exception {
+		
+		return getCursoDao().getEmpresas();
 	}
 
 }

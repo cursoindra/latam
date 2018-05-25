@@ -78,5 +78,9 @@ public class DatoLaboral implements Serializable {
 
 		return empleado;
 	}
-
+	@Override
+	public String toString() {
+		
+		return getCargo().getDescripcion()+" - "+getSalario();
+	}
 }

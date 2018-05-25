@@ -21,7 +21,7 @@ public interface CursoDaoInterface {
 	public void grabaEmpleado(Empleado empleado) throws Exception;
 	public void grabaEmpresa(Empresa empresa) throws Exception;
 	
-	public Empresa getEmpresa(String nombre) throws Exception ;
+	public Empresa getEmpresa(int id) throws Exception ;
 	public List<Empleado> getEmpleados() throws Exception ;
 	public List<Cargo> getCargos() throws Exception ;
 	public List<Estadocivil> getEstadoCivil() throws Exception ;
