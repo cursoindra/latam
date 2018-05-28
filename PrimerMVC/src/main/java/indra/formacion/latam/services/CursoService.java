@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import indra.formacion.latam.daos.CursoDao;
+import indra.formacion.latam.daos.CursoDaoInterface;
 import indra.formacion.latam.datos.Cargo;
 import indra.formacion.latam.datos.DatoLaboral;
 import indra.formacion.latam.datos.DatoPersonal;
@@ -20,7 +21,7 @@ import indra.formacion.latam.delegates.CursoDelegate;
 public class CursoService implements CursoServiceInterface {
 
 	@Autowired
-	private CursoDao cursoDao;
+	private CursoDaoInterface cursoDao;
 	
 	
 	@Override
@@ -99,11 +100,11 @@ public class CursoService implements CursoServiceInterface {
 		return getCursoDao().getDatoPersonal();
 	}
 
-	public CursoDao getCursoDao() {
+	public CursoDaoInterface getCursoDao() {
 		return cursoDao;
 	}
 
-	public void setCursoDao(CursoDao cursoDao) {
+	public void setCursoDao(CursoDaoInterface cursoDao) {
 		this.cursoDao = cursoDao;
 	}
 

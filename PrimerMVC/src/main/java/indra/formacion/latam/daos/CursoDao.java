@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -12,9 +11,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Repository;
 
+import indra.formacion.latam.anotaciones.Vigilado;
 import indra.formacion.latam.datos.Cargo;
 import indra.formacion.latam.datos.DatoLaboral;
 import indra.formacion.latam.datos.DatoPersonal;
@@ -28,276 +27,281 @@ public class CursoDao implements CursoDaoInterface {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
+	private Session session;
+
 	@Override
+	@Vigilado
 	public void grabaHijo(Hijo hijo) throws Exception {
-		Session session= getSessionFactory().openSession();
-		Transaction tx= session.beginTransaction();
-		session.saveOrUpdate(hijo);
+
+		Transaction tx = getSession().beginTransaction();
+		getSession().saveOrUpdate(hijo);
 		tx.commit();
-		session.close();
 
 	}
 
 	@Override
+	@Vigilado
 	public void grabaEstadoCivil(Estadocivil estadocivil) throws Exception {
-		Session session= getSessionFactory().openSession();
-		Transaction tx= session.beginTransaction();
-		session.saveOrUpdate(estadocivil);
+		Transaction tx = getSession().beginTransaction();
+		getSession().saveOrUpdate(estadocivil);
 		tx.commit();
-		session.close();
 
 	}
 
 	@Override
+	@Vigilado
 	public void grabaCargo(Cargo cargo) throws Exception {
-		Session session= getSessionFactory().openSession();
-		Transaction tx= session.beginTransaction();
-		session.saveOrUpdate(cargo);
+		Transaction tx = getSession().beginTransaction();
+		getSession().saveOrUpdate(cargo);
 		tx.commit();
-		session.close();
 
 	}
 
 	@Override
+	@Vigilado
 	public void grabaDatoPersonal(DatoPersonal datoPersonal) throws Exception {
-		Session session= getSessionFactory().openSession();
-		Transaction tx= session.beginTransaction();
-		session.saveOrUpdate(datoPersonal);
+		Transaction tx = getSession().beginTransaction();
+		getSession().saveOrUpdate(datoPersonal);
 		tx.commit();
-		session.close();
 
 	}
 
 	@Override
+	@Vigilado
 	public void grabaDatoLaboral(DatoLaboral datoLaboral) throws Exception {
-		Session session= getSessionFactory().openSession();
-		Transaction tx= session.beginTransaction();
-		session.saveOrUpdate(datoLaboral);
+
+		Transaction tx = getSession().beginTransaction();
+		getSession().saveOrUpdate(datoLaboral);
 		tx.commit();
-		session.close();
 
 	}
 
 	@Override
+	@Vigilado
 	public void grabaEmpleado(Empleado empleado) throws Exception {
-		Session session= getSessionFactory().openSession();
-		Transaction tx= session.beginTransaction();
-		session.saveOrUpdate(empleado);
+		Transaction tx = getSession().beginTransaction();
+		getSession().saveOrUpdate(empleado);
 		tx.commit();
-		session.close();
 
 	}
 
 	@Override
+	@Vigilado
 	public void grabaEmpresa(List<Empleado> empleados) throws Exception {
-		Session session= getSessionFactory().openSession();
-		Transaction tx= session.beginTransaction();
+
+		Transaction tx = getSession().beginTransaction();
 		for (Empleado empleado : empleados) {
-			
-			
-			session.update(empleado);
+
+			getSession().update(empleado);
 		}
-		
-	
+
 		tx.commit();
-		session.close();
 
 	}
 
 	@Override
-	public List<Empleado> getEmpresa(int id)  throws Exception {
-		
-		//usado con criteria		
-		Session session=getSessionFactory().openSession();
-		Criteria criteria=session.createCriteria(Empleado.class );
+	@Vigilado
+	public List<Empleado> getEmpresa(int id) throws Exception {
+
+		// usado con criteria
+		Criteria criteria = getSession().createCriteria(Empleado.class);
 		criteria.add(Restrictions.eq("empresa.id", id));
-		List<Empleado> empleados=(List<Empleado>) criteria.list();
-		session.close();
+		List<Empleado> empleados = (List<Empleado>) criteria.list();
+
 		return empleados;
 	}
 
 	@Override
-	public List<Empleado> getEmpleados()  throws Exception {
-		//usado con Query (HQL)
-		
-		Session session= getSessionFactory().openSession();
-		Query query= session.createQuery("from Empleado e");
-		List<Empleado> empleados=query.list();
-		session.close();
+	@Vigilado
+	public List<Empleado> getEmpleados() throws Exception {
+		// usado con Query (HQL)
+
+		Query query = getSession().createQuery("from Empleado e");
+		List<Empleado> empleados = query.list();
+
 		return empleados;
 	}
 
 	@Override
-	public List<Cargo> getCargos()  throws Exception {
-		//usado con sqlquery
-		Session session= getSessionFactory().openSession();
-		SQLQuery sqlQuery= session.createSQLQuery("select id,descripcion from cargos");
-		List<Cargo> listaCargos= new ArrayList<Cargo>();
-		List<Object> listaObjetos=sqlQuery.list();
-		
+	@Vigilado
+	public List<Cargo> getCargos() throws Exception {
+		// usado con sqlquery
+
+		SQLQuery sqlQuery = getSession().createSQLQuery("select id,descripcion from cargos");
+		List<Cargo> listaCargos = new ArrayList<Cargo>();
+		List<Object> listaObjetos = sqlQuery.list();
+
 		for (Object object : listaObjetos) {
-			Object[] objetos=(Object[]) object;
-			Cargo cargo= new Cargo();
+			Object[] objetos = (Object[]) object;
+			Cargo cargo = new Cargo();
 			cargo.setId((Integer) objetos[0]);
 			cargo.setDescripcion((String) objetos[1]);
 			listaCargos.add(cargo);
 		}
-		
-		//Criteria criteria= session.createCriteria(Cargo.class);
-		//return criteria.list();
-		session.close();
+
 		return listaCargos;
 	}
 
 	@Override
-	public List<Estadocivil> getEstadoCivil()  throws Exception {
-		Session session= getSessionFactory().openSession();
-		Criteria criteria= session.createCriteria(Estadocivil.class);
-		List<Estadocivil> estadosCiviles=criteria.list();
-		session.close();
+	@Vigilado
+	public List<Estadocivil> getEstadoCivil() throws Exception {
+
+		Criteria criteria = getSession().createCriteria(Estadocivil.class);
+		List<Estadocivil> estadosCiviles = criteria.list();
+
 		return estadosCiviles;
 	}
 
-	
-
 	@Override
+	@Vigilado
 	public List<DatoLaboral> getDatoLaboral() throws Exception {
-		Session session= getSessionFactory().openSession();
-		Criteria criteria= session.createCriteria(DatoLaboral.class);
-		List<DatoLaboral> datosLaborales=criteria.list();
-		session.close();
+
+		Criteria criteria = getSession().createCriteria(DatoLaboral.class);
+		List<DatoLaboral> datosLaborales = criteria.list();
+
 		return datosLaborales;
 	}
 
 	@Override
+	@Vigilado
 	public List<DatoPersonal> getDatoPersonal() throws Exception {
-		Session session= getSessionFactory().openSession();
-		Criteria criteria= session.createCriteria(DatoPersonal.class);
-		List<DatoPersonal> datosPersonales=criteria.list();
-		session.close();
+
+		Criteria criteria = getSession().createCriteria(DatoPersonal.class);
+		List<DatoPersonal> datosPersonales = criteria.list();
+
 		return datosPersonales;
 	}
 
-	
-	
-	
-
 	@Override
-	public void borraCargo(int id)  throws Exception{
-		Session session= getSessionFactory().openSession();
-		Transaction tx= session.beginTransaction();
-		Cargo  cargo=(Cargo) session.load(Cargo.class,id);
-		session.delete(cargo);
+	@Vigilado
+	public void borraCargo(int id) throws Exception {
+
+		Transaction tx = getSession().beginTransaction();
+		Cargo cargo = (Cargo) getSession().load(Cargo.class, id);
+		getSession().delete(cargo);
 		tx.commit();
-		session.close();
-		
+
 	}
 
 	@Override
+	@Vigilado
 	public void borraEstadoCivil(int id) throws Exception {
-		Session session= getSessionFactory().openSession();
-		Transaction tx= session.beginTransaction();
-		Estadocivil  estadoCivil=(Estadocivil) session.load(Estadocivil.class,id);
-		session.delete(estadoCivil);
+
+		Transaction tx = getSession().beginTransaction();
+		Estadocivil estadoCivil = (Estadocivil) getSession().load(Estadocivil.class, id);
+		getSession().delete(estadoCivil);
 		tx.commit();
-		session.close();
-		
+
 	}
 
 	@Override
+	@Vigilado
 	public void borraHijo(int id) throws Exception {
-		Session session= getSessionFactory().openSession();
-		Transaction tx= session.beginTransaction();
-		Hijo  hijo=(Hijo) session.load(Hijo.class,id);
-		session.delete(hijo);
+
+		Transaction tx = getSession().beginTransaction();
+		Hijo hijo = (Hijo) getSession().load(Hijo.class, id);
+		getSession().delete(hijo);
 		tx.commit();
-		session.close();
-		
+
 	}
 
 	@Override
+	@Vigilado
 	public void borraDatoLaboral(int id) throws Exception {
-		Session session= getSessionFactory().openSession();
-		Transaction tx= session.beginTransaction();
-		DatoLaboral  datoLaboral=(DatoLaboral) session.load(DatoLaboral.class,id);
-		session.delete(datoLaboral);
+
+		Transaction tx = getSession().beginTransaction();
+		DatoLaboral datoLaboral = (DatoLaboral) getSession().load(DatoLaboral.class, id);
+		getSession().delete(datoLaboral);
 		tx.commit();
-		session.close();
-		
+
 	}
 
 	@Override
+	@Vigilado
 	public void borraDatoPersonal(int id) throws Exception {
-		Session session= getSessionFactory().openSession();
-		Transaction tx= session.beginTransaction();
-		DatoPersonal  datoPersonal=(DatoPersonal) session.load(DatoPersonal.class,id);
-		session.delete(datoPersonal);
+
+		Transaction tx = getSession().beginTransaction();
+		DatoPersonal datoPersonal = (DatoPersonal) getSession().load(DatoPersonal.class, id);
+		getSession().delete(datoPersonal);
 		tx.commit();
-		session.close();
+
 	}
 
 	@Override
+	@Vigilado
 	public void borraEmpleado(int id) throws Exception {
-		Session session= getSessionFactory().openSession();
-		Transaction tx= session.beginTransaction();
-		Empleado  empleado=(Empleado) session.load(Empleado.class,id);
+
+		Transaction tx = session.beginTransaction();
+		Empleado empleado = (Empleado) session.load(Empleado.class, id);
 		session.delete(empleado);
 		tx.commit();
-		session.close();
-		
+
 	}
 
 	@Override
+	@Vigilado
 	public void borraEmpresa(int id) throws Exception {
-		Session session= getSessionFactory().openSession();
-		Transaction tx= session.beginTransaction();
-		Empresa  empresa=(Empresa) session.load(Empresa.class,id);
-		session.delete(empresa);
+
+		Transaction tx = getSession().beginTransaction();
+		Empresa empresa = (Empresa) getSession().load(Empresa.class, id);
+		getSession().delete(empresa);
 		tx.commit();
-		session.close();
-		
+
 	}
+
 	@Override
-	public List<Hijo> getHijos() throws  Exception {
-		Session session= getSessionFactory().openSession();
-		Criteria criteria= session.createCriteria(Hijo.class);
-		List<Hijo> hijos=criteria.list();
-		session.close();
+	@Vigilado
+	public List<Hijo> getHijos() throws Exception {
+
+		Criteria criteria = getSession().createCriteria(Hijo.class);
+		List<Hijo> hijos = criteria.list();
+
 		return hijos;
 	}
+
 	@Override
-	public List<Empresa> getEmpresas() throws  Exception {
-		Session session=getSessionFactory().openSession();
-		Criteria criteria= session.createCriteria(Empresa.class);
-		List<Empresa>  empresas= criteria.list();
+	@Vigilado
+	public List<Empresa> getEmpresas() throws Exception {
+		
+		Criteria criteria = getSession().createCriteria(Empresa.class);
+		List<Empresa> empresas = criteria.list();
 		return empresas;
 	}
-	
-	
-	public SessionFactory getSessionFactory()  throws Exception {
+
+	@Override
+	@Vigilado
+	public List<Empleado> getEmpleados(int id) throws Exception {
+		
+		Criteria criteria = getSession().createCriteria(Empleado.class);
+		criteria.add(Restrictions.isNotNull("empresa")).createCriteria("empresa").add(Restrictions.eq("id", id));
+		List<Empleado> empleados = criteria.list();
+		return empleados;
+	}
+
+	@Override
+	@Vigilado
+	public void grabaEmpresaNueva(Empresa empresa) throws Exception {
+		Transaction tx = getSession().beginTransaction();
+
+		getSession().saveOrUpdate(empresa);
+		tx.commit();
+
+	}
+
+	public SessionFactory getSessionFactory() throws Exception {
 		return sessionFactory;
 	}
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	@Override
-	public List<Empleado> getEmpleados(int id) throws  Exception {
-		Session session=getSessionFactory().openSession();
-		Criteria criteria= session.createCriteria(Empleado.class);
-		criteria.add(Restrictions.isNotNull("empresa")).createCriteria("empresa").add(Restrictions.eq("id", id));
-		List<Empleado> empleados=criteria.list();
-		return empleados;
+
+	public Session getSession() {
+		return session;
 	}
 
-	public void grabaEmpresaNueva(Empresa empresa) throws Exception {
-		Session session=getSessionFactory().openSession();
-		Transaction tx= session.beginTransaction();
-		
-		session.saveOrUpdate(empresa);
-		tx.commit();
-		session.close();
-		
+	public void setSession(Session session) {
+		this.session = session;
 	}
 }
