@@ -58,13 +58,13 @@ public class CursoService implements CursoServiceInterface {
 	}
 
 	@Override
-	public void grabaEmpresa(Empresa empresa) throws Exception {
-		getCursoDao().grabaEmpresa(empresa);
+	public void grabaEmpresa(List<Empleado> empleados) throws Exception {
+		getCursoDao().grabaEmpresa(empleados);
 
 	}
 
 	@Override
-	public Empresa getEmpresa(int  id) throws Exception {
+	public List<Empleado> getEmpresa(int  id) throws Exception {
 		
 		return getCursoDao().getEmpresa(id);
 	}
@@ -157,6 +157,11 @@ public class CursoService implements CursoServiceInterface {
 	public List<Empresa> getEmpresas() throws  Exception {
 		
 		return getCursoDao().getEmpresas();
+	}
+@Override 
+	public void grabaEmpresaNueva(Empresa empresa)  throws Exception {
+	getCursoDao().grabaEmpresaNueva( empresa);
+		
 	}
 
 }

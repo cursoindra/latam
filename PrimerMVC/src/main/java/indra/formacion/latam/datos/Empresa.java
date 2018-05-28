@@ -21,8 +21,7 @@ public class Empresa implements Serializable {
 	
 	private String descripcion;
 
-	//bi-directional many-to-one association to Empleado
-	@OneToMany(mappedBy="empresa")
+	@Transient
 	private List<Empleado> empleados;
 
 	public Empresa() {

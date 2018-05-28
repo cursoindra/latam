@@ -41,7 +41,7 @@ public class EmpresasController {
 		modelAndView.addObject("empresa", new Empresa());
 		
 		try {
-			getCursoService().grabaEmpresa(empresa);
+			getCursoService().grabaEmpresaNueva(empresa);
 			
 		} catch (Exception e) {
 			modelAndView.addObject("error","la grabacion no se ha realizado");

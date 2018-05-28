@@ -56,6 +56,7 @@
 				<spring:hidden path="empleados[${datos.index }].datosPersonale.hijo.id"/>
 				<spring:hidden path="empleados[${datos.index }].datosPersonale.hijo.chicos"/>
 				<spring:hidden path="empleados[${datos.index }].datosPersonale.hijo.chicas"/>
+				<spring:hidden path="empleados[${datos.index }].empresa.id"/>
 				<tr>
 					<td><spring:input path="empleados[${datos.index}].nombre" /></td>
 					<td><spring:input path="empleados[${datos.index}].email" /></td>

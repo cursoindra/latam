@@ -90,23 +90,31 @@ public class CursoDao implements CursoDaoInterface {
 	}
 
 	@Override
-	public void grabaEmpresa(Empresa empresa) throws Exception {
+	public void grabaEmpresa(List<Empleado> empleados) throws Exception {
 		Session session= getSessionFactory().openSession();
 		Transaction tx= session.beginTransaction();
-		session.saveOrUpdate(empresa);
+		for (Empleado empleado : empleados) {
+			
+			
+			session.update(empleado);
+		}
+		
+	
 		tx.commit();
 		session.close();
 
 	}
 
 	@Override
-	public Empresa getEmpresa(int id)  throws Exception {
+	public List<Empleado> getEmpresa(int id)  throws Exception {
 		
 		//usado con criteria		
 		Session session=getSessionFactory().openSession();
-		Criteria criteria=session.createCriteria(Empresa.class);
-		criteria.add(Restrictions.eq("id", id));
-		return (Empresa) criteria.uniqueResult();
+		Criteria criteria=session.createCriteria(Empleado.class );
+		criteria.add(Restrictions.eq("empresa.id", id));
+		List<Empleado> empleados=(List<Empleado>) criteria.list();
+		session.close();
+		return empleados;
 	}
 
 	@Override
@@ -115,7 +123,9 @@ public class CursoDao implements CursoDaoInterface {
 		
 		Session session= getSessionFactory().openSession();
 		Query query= session.createQuery("from Empleado e");
-		return query.list();
+		List<Empleado> empleados=query.list();
+		session.close();
+		return empleados;
 	}
 
 	@Override
@@ -133,8 +143,10 @@ public class CursoDao implements CursoDaoInterface {
 			cargo.setDescripcion((String) objetos[1]);
 			listaCargos.add(cargo);
 		}
+		
 		//Criteria criteria= session.createCriteria(Cargo.class);
 		//return criteria.list();
+		session.close();
 		return listaCargos;
 	}
 
@@ -142,7 +154,9 @@ public class CursoDao implements CursoDaoInterface {
 	public List<Estadocivil> getEstadoCivil()  throws Exception {
 		Session session= getSessionFactory().openSession();
 		Criteria criteria= session.createCriteria(Estadocivil.class);
-		return criteria.list();
+		List<Estadocivil> estadosCiviles=criteria.list();
+		session.close();
+		return estadosCiviles;
 	}
 
 	
@@ -151,25 +165,23 @@ public class CursoDao implements CursoDaoInterface {
 	public List<DatoLaboral> getDatoLaboral() throws Exception {
 		Session session= getSessionFactory().openSession();
 		Criteria criteria= session.createCriteria(DatoLaboral.class);
-		return criteria.list();
+		List<DatoLaboral> datosLaborales=criteria.list();
+		session.close();
+		return datosLaborales;
 	}
 
 	@Override
 	public List<DatoPersonal> getDatoPersonal() throws Exception {
 		Session session= getSessionFactory().openSession();
 		Criteria criteria= session.createCriteria(DatoPersonal.class);
-		return criteria.list();
+		List<DatoPersonal> datosPersonales=criteria.list();
+		session.close();
+		return datosPersonales;
 	}
 
 	
 	
-	public SessionFactory getSessionFactory()  throws Exception {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+	
 
 	@Override
 	public void borraCargo(int id)  throws Exception{
@@ -246,17 +258,46 @@ public class CursoDao implements CursoDaoInterface {
 		session.close();
 		
 	}
-
+	@Override
 	public List<Hijo> getHijos() throws  Exception {
 		Session session= getSessionFactory().openSession();
 		Criteria criteria= session.createCriteria(Hijo.class);
-		return criteria.list();
+		List<Hijo> hijos=criteria.list();
+		session.close();
+		return hijos;
 	}
-
+	@Override
 	public List<Empresa> getEmpresas() throws  Exception {
 		Session session=getSessionFactory().openSession();
 		Criteria criteria= session.createCriteria(Empresa.class);
+		List<Empresa>  empresas= criteria.list();
+		return empresas;
+	}
+	
+	
+	public SessionFactory getSessionFactory()  throws Exception {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+	@Override
+	public List<Empleado> getEmpleados(int id) throws  Exception {
+		Session session=getSessionFactory().openSession();
+		Criteria criteria= session.createCriteria(Empleado.class);
+		criteria.add(Restrictions.isNotNull("empresa")).createCriteria("empresa").add(Restrictions.eq("id", id));
+		List<Empleado> empleados=criteria.list();
+		return empleados;
+	}
+
+	public void grabaEmpresaNueva(Empresa empresa) throws Exception {
+		Session session=getSessionFactory().openSession();
+		Transaction tx= session.beginTransaction();
 		
-		return criteria.list();
+		session.saveOrUpdate(empresa);
+		tx.commit();
+		session.close();
+		
 	}
 }

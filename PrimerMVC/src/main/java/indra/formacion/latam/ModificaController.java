@@ -36,7 +36,10 @@ public class ModificaController {
 		ModelAndView modelAndView= new ModelAndView("modificacion");
 		
 		try {
-			modelAndView.addObject("empresaModificada", getCursoService().getEmpresa(empresa.getId()));
+			Empresa empresaModificada= new Empresa();
+			empresaModificada.setEmpleados(getCursoService().getEmpresa(empresa.getId()));
+			
+			modelAndView.addObject("empresaModificada", empresaModificada);
 		} catch (Exception e) {
 			modelAndView.addObject("error", "no se ha podido realizar la carga de datos");
 			e.printStackTrace();
@@ -64,7 +67,7 @@ public class ModificaController {
 		ModelAndView modelAndView= new ModelAndView("modificacion");
 		
 		try {
-			getCursoService().grabaEmpresa(empresa);
+			getCursoService().grabaEmpresa(empresa.getEmpleados());
 		} catch (Exception e) {
 			modelAndView.addObject("error","la grabacion no se ha realizado");
 			e.printStackTrace();
@@ -74,6 +77,10 @@ public class ModificaController {
 				modelAndView.addObject("datosLaborales", getCursoService().getDatoLaboral());
 				modelAndView.addObject("datosPersonales",getCursoService().getDatoPersonal());
 				modelAndView.addObject("empresas", getCursoService().getEmpresas());
+				modelAndView.addObject("empresa", new Empresa());
+				empresa.setEmpleados(getCursoService().getEmpresa(empresa.getEmpleados().get(0).getEmpresa().getId()));
+				
+				modelAndView.addObject("empresaModificada", empresa);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

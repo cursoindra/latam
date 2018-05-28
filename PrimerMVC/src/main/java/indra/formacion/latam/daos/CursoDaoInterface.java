@@ -19,9 +19,9 @@ public interface CursoDaoInterface {
 	public void grabaDatoPersonal(DatoPersonal datoPersonal) throws Exception;
 	public void grabaDatoLaboral(DatoLaboral datoLaboral) throws Exception;
 	public void grabaEmpleado(Empleado empleado) throws Exception;
-	public void grabaEmpresa(Empresa empresa) throws Exception;
+	public void grabaEmpresa(List<Empleado> empleados) throws Exception;
 	
-	public Empresa getEmpresa(int id) throws Exception ;
+	public List<Empleado> getEmpresa(int id) throws Exception ;
 	public List<Empleado> getEmpleados() throws Exception ;
 	public List<Cargo> getCargos() throws Exception ;
 	public List<Estadocivil> getEstadoCivil() throws Exception ;
@@ -34,6 +34,9 @@ public interface CursoDaoInterface {
 	public void borraDatoPersonal(int id) throws Exception;
 	public void borraEmpleado(int id) throws Exception;
 	public void borraEmpresa(int id) throws Exception;
+	List<Empresa> getEmpresas() throws Exception;
+	List<Empleado> getEmpleados(int id) throws Exception;
+	List<Hijo> getHijos() throws Exception;
 	
 	
 
