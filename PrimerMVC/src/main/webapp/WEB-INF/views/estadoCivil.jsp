@@ -5,37 +5,43 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<jsp:include page="cabecera.jsp"></jsp:include>
 </head>
 <body>
-	<h1 align="center">ESTADO CIVIL</h1>
-	<spring:form action="/latam/grabaEstadoCivil" method="post"
-		modelAttribute="estadoCivil">
+	<div class="container">
+		<jsp:include page="menu.jsp"></jsp:include>
+		<div style="padding-top: 50px">
+			<h1 align="center">ESTADO CIVIL</h1>
+			<spring:form action="/latam/grabaEstadoCivil" method="post"
+				modelAttribute="estadoCivil">
 
-		<table border="1" align="center">
-			<tr>
-				<td><spring:input path="descripcion" /></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="grabar"></td>
-			</tr>
-		</table>
-		<table border="1" align="center">
-			<c:forEach items="${estadosCiviles }" var="estadoCivil">
-				<tr>
-					<td>${estadoCivil.descripcion }</td>
-					<td><a href="/latam/borraEstadoCivil/${estadoCivil.id }">borrar</a></td>
-				</tr>
+				<table  align="center" class="table"  style="width: 50%">
+					<tr>
 
-			</c:forEach>
-		</table>
+						<td><div class="form-group">
+						<label for="descripcion">DESCRIPCION</label>
+								<spring:input path="descripcion" cssClass="form-control"/>
+							</div></td>
 
-	</spring:form>
-	<h1 style="color: #ff0000">${error }</h1>
-	<div align="center">
-		<a href="/latam/">MENU</a>
+					</tr>
+					<tr>
+						<td align="center"><input type="submit" value="grabar" class="btn btn-default"></td>
+					</tr>
+				</table >
+				<table class="table table-striped" style="width: 50%" align="center">
+					<c:forEach items="${estadosCiviles }" var="estadoCivil">
+						<tr>
+							<td>${estadoCivil.descripcion }</td>
+							<td align="center"><a href="/latam/borraEstadoCivil/${estadoCivil.id }" class="btn btn-danger">borrar</a></td>
+						</tr>
+
+					</c:forEach>
+				</table>
+
+			</spring:form>
+			<h1 style="color: #ff0000">${error }</h1>
+			
+		</div>
 	</div>
-
 </body>
 </html>

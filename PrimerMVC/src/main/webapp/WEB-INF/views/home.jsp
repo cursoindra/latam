@@ -3,37 +3,16 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
-<title>Home</title>
+<jsp:include page="cabecera.jsp"></jsp:include>
 </head>
 <body>
+	<div class="container">
+		<jsp:include page="menu.jsp"></jsp:include>
 
-	<h1 align="center">MENU DE OPCIONES</h1>
-	<table border="1" align="center">
-		<tr>
-			<td><a href="altaCargos">ALTA CARGOS</a></td>
-		</tr>
-		<tr>
-			<td><a href="estadoCivil">ALTA ESTADO CIVIL</a></td>
-		</tr>
-		<tr>
-			<td><a href="hijos">ALTA HIJOS</a></td>
-		</tr>
-		<tr>
-			<td><a href="datosLaborales">ALTA DATOS LABORALES</a></td>
-		</tr>
-		<tr>
-			<td><a href="datosPersonales">ALTA DATOS PERSONALES</a></td>
-		</tr>
-		<tr>
-			<td><a href="empleados">ALTA EMPLEADO</a></td>
-		</tr>
-		<tr>
-			<td><a href="empresas">ALTA EMPRESA</a></td>
-		</tr>
-		<tr>
-			<td><a href="modificacion">MODIFICACION</a></td>
-		</tr>
-	</table>
+		<div class="jumbotron" align="center" style="margin-top: 300px">
+			<h1>Gestion de empresas</h1>
+		</div>
 
+	</div>
 </body>
 </html>
